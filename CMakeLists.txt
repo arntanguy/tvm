@@ -8,7 +8,6 @@ set(PROJECT_VERSION 0.8.0)
 set(PROJECT_USE_CMAKE_EXPORT TRUE)
 
 set(CMAKE_CXX_STANDARD 17)
-
 include(cmake/base.cmake)
 include(cmake/msvc-specific.cmake)
 
@@ -70,9 +69,9 @@ if(${TVM_WITH_QLD})
   set(USING_SOLVER TRUE)
 endif()
 
-###################
-# - eigen-qld - #
-###################
+######################
+# - eigen-quadprog - #
+######################
 option(TVM_WITH_QUADPROG "Build with Quadprog support" OFF)
 if(${TVM_WITH_QUADPROG})
   add_project_dependency(eigen-quadprog REQUIRED)
@@ -113,3 +112,7 @@ add_subdirectory(src)
 if(${BUILD_TESTING})
   add_subdirectory(tests)
 endif()
+
+install(DIRECTORY include ${CMAKE_BINARY_DIR}/include
+          DESTINATION ${CMAKE_INSTALL_PREFIX}
+          FILES_MATCHING REGEX "h(pp)?$")
