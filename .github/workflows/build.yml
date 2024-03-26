@@ -80,7 +80,7 @@ jobs:
           - path: jrl-umi3218/RBDyn
           - path: jrl-umi3218/Tasks
           - path: jrl-umi3218/mc_rtc_data
-            branch: ROSFree
+            ref: ROSFree
       if: matrix.with-robot == 'ON'
     - name: Build and test
       uses: jrl-umi3218/github-actions/build-cmake-project@master
